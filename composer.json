@@ -1,0 +1,12 @@
+{
+  "name": "328/dating",
+  "authors": [
+    {
+      "name": "Evan Wheeler",
+      "email": "ewheeler5@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
