@@ -1,4 +1,9 @@
 <?php
+/*
+ * Author: Evan Wheeler
+ * Date: 4/14/19
+ * Purpose: To practice using F3 and utilize the MVC design pattern (somewhat)
+ */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
