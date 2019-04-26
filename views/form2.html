@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Join</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Dating Site</span>
+</nav>
+
+<div class="container">
+    <h1>Profile</h1>
+    <hr>
+
+    <form action="interests" method="post">
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="w-100">
+                    <b>Email</b>
+                    <br>
+                    <input type="email" name="email" class="w-50 form-control">
+                </label>
+                <br>
+
+                <label class="w-50">
+                    <b>State</b>
+                    <br>
+                    <select class="form-control" name="state">
+                        <option value="ak">ALASKA</option>
+                        <option value="al">ALABAMA</option>
+                        <option value="ar">ARKANSAS</option>
+                        <option value="az">ARIZONA</option>
+                        <option value="ca">CALIFORNIA</option>
+                        <option value="co">COLORADO</option>
+                        <option value="ct">CONNECTICUT</option>
+                        <option value="de">DELAWARE</option>
+                        <option value="fl">FLORIDA</option>
+                        <option value="ga">GEORGIA</option>
+                        <option value="hi">HAWAII</option>
+                        <option value="ia">IOWA</option>
+                        <option value="id">IDAHO</option>
+                        <option value="il">ILLINOIS</option>
+                        <option value="in">INDIANA</option>
+                        <option value="ks">KANSAS</option>
+                        <option value="ky">KENTUCKY</option>
+                        <option value="la">LOUISIANA</option>
+                        <option value="ma">MASSACHUSETTS</option>
+                        <option value="md">MARYLAND</option>
+                        <option value="me">MAINE</option>
+                        <option value="mi">MICHIGAN</option>
+                        <option value="mn">MINNESOTA</option>
+                        <option value="mo">MISSOURI</option>
+                        <option value="ms">MISSISSIPPI</option>
+                        <option value="mt">MONTANA</option>
+                        <option value="nc">NORTH CAROLINA</option>
+                        <option value="nd">NORTH DAKOTA</option>
+                        <option value="ne">NEBRASKA</option>
+                        <option value="nh">NEW HAMPSHIRE</option>
+                        <option value="nj">NEW JERSEY</option>
+                        <option value="nm">NEW MEXICO</option>
+                        <option value="nv">NEVADA</option>
+                        <option value="ny">NEW YORK</option>
+                        <option value="oh">OHIO</option>
+                        <option value="ok">OKLAHOMA</option>
+                        <option value="or">OREGON</option>
+                        <option value="pa">PENNSYLVANIA</option>
+                        <option value="pr">PUERTO RICO</option>
+                        <option value="ri">RHODE ISLAND</option>
+                        <option value="sc">SOUTH CAROLINA</option>
+                        <option value="sd">SOUTH DAKOTA</option>
+                        <option value="tn">TENNESSEE</option>
+                        <option value="tx">TEXAS</option>
+                        <option value="ut">UTAH</option>
+                        <option value="va">VIRGINIA</option>
+                        <option value="vt">VERMONT</option>
+                        <option value="wa">WASHINGTON</option>
+                        <option value="wi">WISCONSIN</option>
+                        <option value="wv">WEST VIRGINIA</option>
+                        <option value="wy">WYOMING</option>
+                    </select>
+                </label>
+                <br>
+
+                <label class="w-50">
+                    <b>Seeking</b>
+                    <br>
+                    <label class="radio-inline">
+                        <input type="radio" name="seeking" value="Male"><span> Male</span>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="seeking" value="Female"><span> Female</span>
+                    </label>
+                </label>
+            </div>
+
+            <div class="col-lg-6">
+                <label class="w-100">
+                    <b>Bio</b>
+                    <br>
+                    <textarea class="w-100" rows="5" name="bio"></textarea>
+                </label>
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary float-right" value="Next >">
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

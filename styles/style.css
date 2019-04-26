@@ -1,0 +1,20 @@
+ul {
+    list-style-type: none;
+}
+
+li {
+    padding: 10px;
+    font-style: italic;
+}
+
+.join {
+    text-align: center;
+}
+
+.note {
+    background-color: #F2F2F2;
+}
+
+.priv {
+    color: #0000FF;
+}
