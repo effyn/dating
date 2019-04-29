@@ -43,5 +43,21 @@ $f3->route('POST /interests', function() {
     echo $view->render('views/form3.html');
 });
 
+$f3->route('POST /summary', function() {
+
+    $indoor = isset($_POST['indoor']) ? $_POST['indoor'] : [];
+    $outdoor = isset($_POST['outdoor']) ? $_POST['outdoor'] : [];
+
+    $interests = "";
+    foreach (array_merge($indoor, $outdoor) as $interest)
+    {
+        $interests .= $interest . " ";
+    }
+    $_SESSION['interests'] = $interests;
+
+    $view = new Template();
+    echo $view->render('views/summary.html');
+});
+
 
 $f3 -> run();
