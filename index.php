@@ -33,5 +33,15 @@ $f3->route('POST /profile', function() {
     echo $view->render('views/form2.html');
 });
 
+$f3->route('POST /interests', function() {
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['state'] = $_POST['state'];
+    $_SESSION['seeking'] = $_POST['seeking'];
+    $_SESSION['bio'] = $_POST['bio'];
+
+    $view = new Template();
+    echo $view->render('views/form3.html');
+});
+
 
 $f3 -> run();
