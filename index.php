@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 
 require_once('vendor/autoload.php');
 
+session_start();
 $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 
