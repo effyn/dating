@@ -12,12 +12,15 @@
 </head>
 <body>
 
+<!--Nav bar-->
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand mb-0 h1" href=".">Dating Site</a>
 </nav>
 
+<!--Main container-->
 <div class="container">
     <div class="row">
+        <!--Half width-->
         <div class="col-6">
             <ul class="list-group">
                 <li class="list-group-item">Name: {{@SESSION.firstName}} {{@SESSION.lastName}}</li>
@@ -31,6 +34,7 @@
             </ul>
         </div>
 
+        <!--Half width-->
         <div class="col-6">
             <img src="images/avatar.jpg" class="img-fluid rounded" alt="Avatar">
             <h4>Biography</h4>
@@ -38,7 +42,9 @@
         </div>
     </div>
 
+    <!--text-center centers child elements-->
     <div class="text-center">
+        <!--Do nothing-->
         <a class="btn btn-primary" href="#">Contact Me!</a>
     </div>
 </div>
