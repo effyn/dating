@@ -25,23 +25,61 @@ $f3->route('GET /', function() {
 });
 
 // 1st of three forms
-$f3->route('GET /join', function() {
+$f3->route('GET|POST /join', function() {
     $view = new Template();
     echo $view->render('views/form1.html');
 });
 
 // 2nd of three forms, collects data from form 1 in session
-$f3->route('POST /profile', function() {
-    $_SESSION['firstName'] = $_POST['firstName'];
-    $_SESSION['lastName'] = $_POST['lastName'];
-    $_SESSION['age'] = $_POST['age'];
+$f3->route('GET|POST /profile', function($f3) {
+    if (validName($_POST['firstName']))
+    {
+        $_SESSION['firstName'] = $_POST['firstName'];
+    }
+    else
+    {
+        $errors['firstName'] = true;
+    }
+
+    if (validName($_POST['lastName']))
+    {
+        $_SESSION['lastName'] = $_POST['lastName'];
+    }
+    else
+    {
+        $errors['lastName'] = true;
+    }
+
+    if (validAge($_POST['age']))
+    {
+        $_SESSION['age'] = $_POST['age'];
+    }
+    else
+    {
+        $errors['age'] = true;
+    }
+
+    if (validPhone($_POST['phone']))
+    {
+        $_SESSION['phone'] = $_POST['phone'];
+    }
+    else
+    {
+        $errors['phone'] = true;
+    }
+
     $_SESSION['gender'] = $_POST['gender'];
-    $_SESSION['phone'] = $_POST['phone'];
 
-    $view = new Template();
-    echo $view->render('views/form2.html');
+    if (empty($errors))
+    {
+        $view = new Template();
+        echo $view->render('views/form2.html');
+    }
+
+    else {
+        $f3->reroute('/join');
+    }
 });
-
 // 3rd of three forms, collects data from form 2 in session
 $f3->route('POST /interests', function() {
     $_SESSION['email'] = $_POST['email'];
