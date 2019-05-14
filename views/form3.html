@@ -27,68 +27,30 @@
         <check if="in_array('indoor', @errors)">
             <div class="alert alert-danger">Please select at least one indoor interest.</div>
         </check>
+
         <div class="row ml-2">
+            <!-- 8x col-3 (1/4) = col-12 (2), 2 rows -->
             <repeat group="{{@indoor}}" value="{{@interest}}">
                 <label class="col-3 float-left">
                     <input type="checkbox" name="indoor[]" value="{{@interest}}"
                     <check if="in_array(@interest, @SESSION.indoor)">checked</check>><span> {{@interest}}</span>
                 </label>
             </repeat>
-            <!-- 4x col-3 (1/4) = col-12 (1), one row -->
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="tv"><span> tv</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="movies"><span> movies</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="cooking"><span> cooking</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="board-games"><span> board games</span>
-            </label>
-
-            <!-- 4x col-3 (1/4) = col-12 (1), two rows -->
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="puzzles"><span> puzzles</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="reading"><span> reading</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="playing-cards"><span> playing cards</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="indoor[]" value="video-games"><span> video games</span>
-            </label>
         </div>
 
         <h4>Outdoor Interests</h4>
         <check if="in_array('outdoor', @errors)">
             <div class="alert alert-danger">Please select at least one outdoor interest.</div>
         </check>
-        <div class="row ml-2">
-            <!-- 4x col-3 (1/4) = col-12 (1), one row -->
-            <label class="col-3 float-left">
-                <input type="checkbox" name="outdoor[]" value="hiking"><span> hiking</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="outdoor[]" value="biking"><span> biking</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="outdoor[]" value="swimming"><span> swimming</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="outdoor[]" value="collecting"><span> collecting</span>
-            </label>
 
-            <!-- 2x col-3 (1/4) = col-12 (1/2), one and a half rows -->
-            <label class="col-3 float-left">
-                <input type="checkbox" name="outdoor[]" value="walking"><span> walking</span>
-            </label>
-            <label class="col-3 float-left">
-                <input type="checkbox" name="outdoor[]" value="climbing"><span> climbing</span>
-            </label>
+        <div class="row ml-2">
+            <!-- 6x col-3 (1/4) = col-12 (1.5), 1.5 rows -->
+            <repeat group="{{@outdoor}}" value="{{@interest}}">
+                <label class="col-3 float-left">
+                    <input type="checkbox" name="outdoor[]" value="{{@interest}}"
+                    <check if="in_array(@interest, @SESSION.outdoor)">checked</check>><span> {{@interest}}</span>
+                </label>
+            </repeat>
         </div>
 
         <input type="submit" class="btn btn-primary float-right" value="Next >">

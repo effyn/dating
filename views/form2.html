@@ -27,11 +27,10 @@
             <!--Half width-->
             <div class="col-lg-6">
                 <label class="w-100">
-                    <check if="in_array('email', @errors)">
-                        <div class="alert alert-danger">Please enter a valid email.</div>
-                    </check>
-                    <b>Email</b>
-                    <br>
+                    <p><b>Email</b>
+                        <check if="in_array('email', @errors)">
+                            <div class="alert alert-danger">Please enter a valid email.</div>
+                        </check></p>
                     <input type="email" name="email" class="w-50 form-control">
                 </label>
                 <br>

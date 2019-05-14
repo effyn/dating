@@ -25,35 +25,31 @@
             <!-- 2/3 of the page -->
             <div class="col-lg-8">
                 <div class="w-75">
-                    <check if="in_array('firstName', @errors)">
-                        <div class="alert alert-danger">Please enter a valid first name.</div>
-                    </check>
-                    <b>First Name</b>
-                    <br>
+                    <p><b>First Name</b>
+                        <check if="in_array('firstName', @errors)">
+                            <div class="alert alert-danger">Please enter a valid first name.</div>
+                        </check></p>
                     <input type="text" name="firstName" value="{{@SESSION.firstName}}" class="w-50 form-control">
                 </div>
 
                 <div class="w-75">
-                    <check if="in_array('lastName', @errors)">
-                        <div class="alert alert-danger">Please enter a valid last name.</div>
-                    </check>
-                    <b>Last Name</b>
-                    <br>
+                    <p><b>Last Name</b>
+                        <check if="in_array('lastName', @errors)">
+                            <div class="alert alert-danger">Please enter a valid last name.</div>
+                        </check></p>
                     <input type="text" name="lastName" value="{{@SESSION.lastName}}" class="w-50 form-control">
                 </div>
 
                 <div class="w-25">
-                    <check if="in_array('age', @errors)">
-                        <div class="alert alert-danger">Please enter a valid age.</div>
-                    </check>
-                    <b>Age</b>
-                    <br>
+                    <p><b>Age</b>
+                        <check if="in_array('age', @errors)">
+                            <div class="alert alert-danger">Please enter a valid age.</div>
+                        </check></p>
                     <input type="number" name="age" value="{{@SESSION.age}}" class="w-50 form-control">
                 </div>
 
                 <div class="w-50">
-                    <b>Gender</b>
-                    <br>
+                    <p><b>Gender</b></p>
                     <label class="radio-inline">
                         <input type="radio" name="gender" value="male" checked><span> Male</span>
                     </label>
@@ -63,11 +59,10 @@
                 </div>
 
                 <div class="w-50">
-                    <check if="in_array('phone', @errors)">
-                        <div class="alert alert-danger">Please enter a valid phone number.</div>
-                    </check>
-                    <b>Phone Number</b>
-                    <br>
+                    <p><b>Phone Number</b>
+                        <check if="in_array('phone', @errors)">
+                            <div class="alert alert-danger">Please enter a valid phone number.</div>
+                        </check></p>
                     <input type="text" name="phone" value="{{@SESSION.phone}}" class="w-50 form-control">
                 </div>
             </div>
