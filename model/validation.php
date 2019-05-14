@@ -31,6 +31,10 @@ define('indoor', [
 
 function validIndoor($indoor)
 {
+    if (empty($indoor)) {
+        return false;
+    }
+
     foreach ($indoor as $interest)
     {
         if (!in_array($interest, $indoor))
@@ -48,6 +52,10 @@ define('outdoor', [
 
 function validOutdoor($outdoor)
 {
+    if (empty($outdoor)) {
+        return false;
+    }
+
     foreach ($outdoor as $interest)
     {
         if (!in_array($interest, $outdoor))

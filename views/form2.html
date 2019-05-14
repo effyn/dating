@@ -22,11 +22,14 @@
     <h1>Profile</h1>
     <hr>
 
-    <form action="interests" method="post">
+    <form action="profile" method="post">
         <div class="row">
             <!--Half width-->
             <div class="col-lg-6">
                 <label class="w-100">
+                    <check if="in_array('email', @errors)">
+                        <div class="alert alert-danger">Please enter a valid email.</div>
+                    </check>
                     <b>Email</b>
                     <br>
                     <input type="email" name="email" class="w-50 form-control">
@@ -96,7 +99,7 @@
                     <b>Seeking</b>
                     <br>
                     <label class="radio-inline">
-                        <input type="radio" name="seeking" value="Male"><span> Male</span>
+                        <input type="radio" name="seeking" value="Male" checked><span> Male</span>
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="seeking" value="Female"><span> Female</span>

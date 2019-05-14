@@ -22,9 +22,18 @@
     <h1>Interests</h1>
     <hr>
 
-    <form action="summary" method="post">
+    <form action="interests" method="post">
         <h4>Indoor Interests</h4>
+        <check if="in_array('indoor', @errors)">
+            <div class="alert alert-danger">Please select at least one indoor interest.</div>
+        </check>
         <div class="row ml-2">
+            <repeat group="{{@indoor}}" value="{{@interest}}">
+                <label class="col-3 float-left">
+                    <input type="checkbox" name="indoor[]" value="{{@interest}}"
+                    <check if="in_array(@interest, @SESSION.indoor)">checked</check>><span> {{@interest}}</span>
+                </label>
+            </repeat>
             <!-- 4x col-3 (1/4) = col-12 (1), one row -->
             <label class="col-3 float-left">
                 <input type="checkbox" name="indoor[]" value="tv"><span> tv</span>
@@ -55,6 +64,9 @@
         </div>
 
         <h4>Outdoor Interests</h4>
+        <check if="in_array('outdoor', @errors)">
+            <div class="alert alert-danger">Please select at least one outdoor interest.</div>
+        </check>
         <div class="row ml-2">
             <!-- 4x col-3 (1/4) = col-12 (1), one row -->
             <label class="col-3 float-left">
