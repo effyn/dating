@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Represents a member.
+ *
+ * @author Evan Wheeler
+ */
 class Member
 {
     private $_fname;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Represents a Premium member.
+ *
+ * @author Evan Wheeler
+ */
 class PremiumMember extends Member
 {
     private $_indoorInterests;

@@ -1,4 +1,5 @@
 <?php
+
 function validName($name)
 {
     return ctype_alpha($name);
@@ -6,8 +7,7 @@ function validName($name)
 
 function validAge($age)
 {
-    if (is_numeric($age))
-    {
+    if (is_numeric($age)) {
         $numAge = intval($age);
         return $numAge >= 18 && $numAge <= 118;
     }
@@ -27,7 +27,8 @@ function validEmail($email)
 
 define('indoor', [
     'tv', 'movies', 'cooking', 'board-games',
-    'puzzles', 'reading', 'playing-cards', 'video-games']);
+    'puzzles', 'reading', 'playing-cards', 'video-games'
+]);
 
 function validIndoor($indoor)
 {
@@ -35,10 +36,8 @@ function validIndoor($indoor)
         return false;
     }
 
-    foreach ($indoor as $interest)
-    {
-        if (!in_array($interest, indoor))
-        {
+    foreach ($indoor as $interest) {
+        if (!in_array($interest, indoor)) {
             return false;
         }
     }
@@ -48,7 +47,8 @@ function validIndoor($indoor)
 
 define('outdoor', [
     'hiking', 'biking', 'swimming',
-    'collecting', 'walking', 'climbing']);
+    'collecting', 'walking', 'climbing'
+]);
 
 function validOutdoor($outdoor)
 {
@@ -56,10 +56,8 @@ function validOutdoor($outdoor)
         return false;
     }
 
-    foreach ($outdoor as $interest)
-    {
-        if (!in_array($interest, outdoor))
-        {
+    foreach ($outdoor as $interest) {
+        if (!in_array($interest, outdoor)) {
             return false;
         }
     }
