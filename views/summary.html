@@ -23,14 +23,16 @@
         <!--Half width-->
         <div class="col-6">
             <ul class="list-group">
-                <li class="list-group-item">Name: {{@SESSION.firstName}} {{@SESSION.lastName}}</li>
-                <li class="list-group-item">Gender: {{@SESSION.gender}}</li>
-                <li class="list-group-item">Age: {{@SESSION.age}}</li>
-                <li class="list-group-item">Phone: {{@SESSION.phone}}</li>
-                <li class="list-group-item">Email: {{@SESSION.email}}</li>
-                <li class="list-group-item">State: {{@SESSION.state}}</li>
-                <li class="list-group-item">Seeking: {{@SESSION.seeking}}</li>
-                <li class="list-group-item">Interests: {{@SESSION.interests}}</li>
+                <li class="list-group-item">Name: {{@SESSION.member->getFname()}} {{@SESSION.member->getLname()}}</li>
+                <li class="list-group-item">Gender: {{@SESSION.member->getGender()}}</li>
+                <li class="list-group-item">Age: {{@SESSION.member->getAge()}}</li>
+                <li class="list-group-item">Phone: {{@SESSION.member->getPhone()}}</li>
+                <li class="list-group-item">Email: {{@SESSION.member->getEmail()}}</li>
+                <li class="list-group-item">State: {{@SESSION.member->getState()}}</li>
+                <li class="list-group-item">Seeking: {{@SESSION.member->getSeeking()}}</li>
+                <check if="@SESSION.member instanceof PremiumMember">
+                    <li class="list-group-item">Interests: {{@SESSION.member->interestString()}}</li>
+                </check>
             </ul>
         </div>
 
@@ -38,7 +40,7 @@
         <div class="col-6">
             <img src="images/avatar.jpg" class="img-fluid rounded" alt="Avatar">
             <h4>Biography</h4>
-            <p>{{@SESSION.bio}}</p>
+            <p>{{@SESSION.member->getBio()}}</p>
         </div>
     </div>
 

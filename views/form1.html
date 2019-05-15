@@ -29,7 +29,7 @@
                         <check if="in_array('firstName', @errors)">
                             <div class="alert alert-danger">Please enter a valid first name.</div>
                         </check></p>
-                    <input type="text" name="firstName" value="{{@SESSION.firstName}}" class="w-50 form-control">
+                    <input type="text" name="firstName" value="{{@firstName}}" class="w-50 form-control">
                 </div>
 
                 <div class="w-75">
@@ -37,7 +37,7 @@
                         <check if="in_array('lastName', @errors)">
                             <div class="alert alert-danger">Please enter a valid last name.</div>
                         </check></p>
-                    <input type="text" name="lastName" value="{{@SESSION.lastName}}" class="w-50 form-control">
+                    <input type="text" name="lastName" value="{{@lastName}}" class="w-50 form-control">
                 </div>
 
                 <div class="w-25">
@@ -45,7 +45,7 @@
                         <check if="in_array('age', @errors)">
                             <div class="alert alert-danger">Please enter a valid age.</div>
                         </check></p>
-                    <input type="number" name="age" value="{{@SESSION.age}}" class="w-50 form-control">
+                    <input type="number" name="age" value="{{@age}}" class="w-50 form-control">
                 </div>
 
                 <div class="w-50">
@@ -59,11 +59,18 @@
                 </div>
 
                 <div class="w-50">
-                    <p><b>Phone Number</b>
+                    <p><b>Phone Number</b></p>
                         <check if="in_array('phone', @errors)">
                             <div class="alert alert-danger">Please enter a valid phone number.</div>
                         </check></p>
-                    <input type="text" name="phone" value="{{@SESSION.phone}}" class="w-50 form-control">
+                    <input type="text" name="phone" value="{{@phone}}" class="w-50 form-control">
+                </div>
+
+                <div class="w-50">
+                    <p><b>Premium Membership</b></p>
+                    <label>
+                        <input type="checkbox" name="premium"><span> Sign me up for a Premium Account!</span>
+                    </label>
                 </div>
             </div>
 

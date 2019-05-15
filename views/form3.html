@@ -30,10 +30,10 @@
 
         <div class="row ml-2">
             <!-- 8x col-3 (1/4) = col-12 (2), 2 rows -->
-            <repeat group="{{@indoor}}" value="{{@interest}}">
+            <repeat group="{{@validIndoor}}" value="{{@interest}}">
                 <label class="col-3 float-left">
                     <input type="checkbox" name="indoor[]" value="{{@interest}}"
-                    <check if="in_array(@interest, @SESSION.indoor)">checked</check>><span> {{@interest}}</span>
+                    <check if="in_array(@interest, @indoor)">checked</check>><span> {{@interest}}</span>
                 </label>
             </repeat>
         </div>
@@ -45,16 +45,15 @@
 
         <div class="row ml-2">
             <!-- 6x col-3 (1/4) = col-12 (1.5), 1.5 rows -->
-            <repeat group="{{@outdoor}}" value="{{@interest}}">
+            <repeat group="{{@validOutdoor}}" value="{{@interest}}">
                 <label class="col-3 float-left">
                     <input type="checkbox" name="outdoor[]" value="{{@interest}}"
-                    <check if="in_array(@interest, @SESSION.outdoor)">checked</check>><span> {{@interest}}</span>
+                    <check if="in_array(@interest, @outdoor)">checked</check>><span> {{@interest}}</span>
                 </label>
             </repeat>
         </div>
 
         <input type="submit" class="btn btn-primary float-right" value="Next >">
-
     </form>
 </div>
 
