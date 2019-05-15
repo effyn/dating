@@ -86,6 +86,7 @@ $f3->route('GET|POST /profile', function($f3)
         $f3->error(403);
     }
 
+    // easy reference to the session member
     $member = $_SESSION['member'];
     $errors = array();
 
@@ -102,10 +103,12 @@ $f3->route('GET|POST /profile', function($f3)
             $member->setSeeking($_POST['seeking']);
             $member->setBio($_POST['bio']);
 
+            // if user is a premium member, take them to the interests page
             if ($member instanceof PremiumMember) {
                 $f3->reroute('interests');
             }
 
+            // otherwise, skip the interests page and display the summary
             $f3->reroute('summary');
         }
     }
@@ -135,6 +138,7 @@ $f3->route('GET|POST /interests', function($f3)
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        // indoor and outdoor are set in the hive for stickiness
         if (validIndoor($_POST['indoor'])) {
             $f3->set('indoor', $_POST['indoor']);
         } else {
@@ -158,8 +162,12 @@ $f3->route('GET|POST /interests', function($f3)
     }
 
     $f3->set('errors', $errors);
+
+    // load the valid interests into the hive for easy generation
+    // these constants were defined in model/validation.php
     $f3->set('validIndoor', indoor);
     $f3->set('validOutdoor', outdoor);
+
     $view = new Template();
     echo $view->render('views/form3.html');
 });
