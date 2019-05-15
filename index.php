@@ -172,17 +172,6 @@ $f3->route('GET /summary', function($f3)
         $f3->error(403);
     }
 
-    $indoor = isset($_SESSION['indoor']) ? $_SESSION['indoor'] : [];
-    $outdoor = isset($_SESSION['outdoor']) ? $_SESSION['outdoor'] : [];
-
-    $interests = "";
-
-    foreach (array_merge($indoor, $outdoor) as $interest) {
-        $interests .= $interest . " ";
-    }
-
-    $_SESSION['interests'] = $interests;
-
     $view = new Template();
     echo $view->render('views/summary.html');
 });
