@@ -13,7 +13,7 @@ class Database
         lname VARCHAR(50) NOT NULL,
         age INT NOT NULL,
         gender VARCHAR(10) NOT NULL,
-        phone VARCHAR(30) NOT NULL,
+        phone CHAR(10) NOT NULL,
         email VARCHAR(254) NOT NULL,
         state CHAR(2) NOT NULL,
         seeking VARCHAR(10) NOT NULL,
