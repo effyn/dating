@@ -39,8 +39,13 @@ class Database
     static $insertMemberSQL = 'INSERT INTO member VALUES (null, :fname, :lname, :age, :gender, :phone,
 :email, :state, :seeking, :bio, :premium, null)';
     static $selectInterestSQL = 'SELECT interest_id FROM interest WHERE interest=:interest LIMIT 1';
+    static $selectMemberInterestsSQL = 'SELECT interest FROM interest, member, member_interest
+WHERE member.member_id=:id 
+AND member.member_id = member_interest.member_id 
+AND member_interest.interest_id = interest.interest_id';
     static $insertInterestSQL = 'INSERT INTO member_interest VALUES (:id, :interest_id)';
     static $selectMembersSQL = 'SELECT * FROM member ORDER BY lname';
+    static $selectMemberIDSQL = 'SELECT * FROM member WHERE member_id=:id LIMIT 1';
 
     private $_db;
 
@@ -125,9 +130,22 @@ class Database
      */
     public function getMembers()
     {
-        $select = $this->_db->prepare(self::$selectMembersSQL);
-        $select->execute();
-        return $select->fetchAll(PDO::FETCH_ASSOC);
+        $selectMembers = $this->_db->prepare(self::$selectMembersSQL);
+        $selectMembers->execute();
+        $members = $selectMembers->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($members as $id=>$member) {
+            // form the full name
+            $members[$id]['name'] = "{$member['fname']} {$member['lname']}";
+
+            if($member['premium'] == 1) {
+                // get and set the interests
+                $interests = implode(', ', $this->getInterests($id+1));
+                $members[$id]['interests'] = $interests;
+            }
+        }
+
+        return $members;
     }
 
     /**
@@ -137,7 +155,9 @@ class Database
      */
     public function getMember($member_id)
     {
-        return array();
+        $selectMember = $this->_db->prepare(self::$selectMemberIDSQL);
+        $selectMember->bindParam(':id', $member_id, PDO::PARAM_INT);
+        return $selectMember->fetch(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -147,6 +167,9 @@ class Database
      */
     public function getInterests($member_id)
     {
-        return array();
+        $selectInterests = $this->_db->prepare(self::$selectMemberInterestsSQL);
+        $selectInterests->bindParam(':id', $member_id);
+        $selectInterests->execute();
+        return $selectInterests->fetchAll(PDO::FETCH_NUM);
     }
 }

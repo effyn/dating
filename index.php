@@ -23,6 +23,7 @@ $db = new Database();
 // root route, shows the landing page
 $f3->route('GET /', function()
 {
+    $f3->
     $view = new Template();
     echo $view->render('views/home.html');
 });
@@ -188,6 +189,17 @@ $f3->route('GET /summary', function($f3)
 
     $view = new Template();
     echo $view->render('views/summary.html');
+});
+
+$f3->route('GET /admin', function($f3)
+{
+    // put the db and members into the hive
+    global $db;
+    $f3->set('db', $db);
+    $f3->set('members', $db->getMembers());
+
+    $view = new Template();
+    echo $view->render('views/admin.html');
 });
 
 // run f3
