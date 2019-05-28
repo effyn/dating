@@ -9,8 +9,6 @@ error_reporting(E_ALL);
 
 // start up f3
 require_once 'vendor/autoload.php';
-// load validation functions
-require_once 'model/validation.php';
 
 // create an instance and enable debugging
 $f3 = Base::instance();
@@ -18,6 +16,9 @@ $f3->set('DEBUG', 3);
 
 // start up a session
 session_start();
+
+// define the database connection
+$db = new Database();
 
 // root route, shows the landing page
 $f3->route('GET /', function()
@@ -108,7 +109,9 @@ $f3->route('GET|POST /profile', function($f3)
                 $f3->reroute('interests');
             }
 
-            // otherwise, skip the interests page and display the summary
+            // otherwise, insert member into the database and display the summary
+            global $db;
+            $db->insertMember($member);
             $f3->reroute('summary');
         }
     }
@@ -157,6 +160,9 @@ $f3->route('GET|POST /interests', function($f3)
             $member->setIndoorInterests($_POST['indoor']);
             $member->setOutdoorInterests($_POST['outdoor']);
 
+            // insert the PremiumMember into the database, then display summary
+            global $db;
+            $db->insertMember($member);
             $f3->reroute('summary');
         }
     }
