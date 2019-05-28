@@ -142,13 +142,13 @@ $f3->route('GET|POST /interests', function($f3)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // indoor and outdoor are set in the hive for stickiness
-        if (validIndoor($_POST['indoor'])) {
+        if (isset($_POST['indoor']) && validIndoor($_POST['indoor'])) {
             $f3->set('indoor', $_POST['indoor']);
         } else {
             $errors[] = 'indoor';
         }
 
-        if (validOutdoor($_POST['outdoor'])) {
+        if (isset($_POST['outdoor']) && validOutdoor($_POST['outdoor'])) {
             $f3->set('outdoor', $_POST['outdoor']);
         } else {
             $errors[] = 'outdoor';
