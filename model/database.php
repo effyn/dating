@@ -38,14 +38,16 @@ class Database
 
     static $insertMemberSQL = 'INSERT INTO member VALUES (null, :fname, :lname, :age, :gender, :phone,
 :email, :state, :seeking, :bio, :premium, null)';
-    static $selectInterestSQL = 'SELECT interest_id FROM interest WHERE interest=:interest LIMIT 1';
+    static $insertInterestSQL = 'INSERT INTO member_interest VALUES (:id, :interest_id)';
+
+    static $selectInterestIDSQL = 'SELECT interest_id FROM interest WHERE interest=:interest LIMIT 1';
+
     static $selectMemberInterestsSQL = 'SELECT interest FROM interest, member, member_interest
 WHERE member.member_id=:id 
 AND member.member_id = member_interest.member_id 
-AND member_interest.interest_id = interest.interest_id';
-    static $insertInterestSQL = 'INSERT INTO member_interest VALUES (:id, :interest_id)';
-    static $selectMembersSQL = 'SELECT * FROM member ORDER BY lname';
+AND interest.interest_id = member_interest.interest_id';
     static $selectMemberIDSQL = 'SELECT * FROM member WHERE member_id=:id LIMIT 1';
+    static $selectMembersSQL = 'SELECT * FROM member ORDER BY member_id';
 
     private $_db;
 
@@ -104,7 +106,7 @@ AND member_interest.interest_id = interest.interest_id';
             // get the last member_id
             $id = $this->_db->lastInsertId();
 
-            $select = $this->_db->prepare(self::$selectInterestSQL);
+            $select = $this->_db->prepare(self::$selectInterestIDSQL);
             $insert = $this->_db->prepare(self::$insertInterestSQL);
 
             $allInterests = array_merge($member->getIndoorInterests(), $member->getOutdoorInterests());
@@ -135,12 +137,14 @@ AND member_interest.interest_id = interest.interest_id';
         $members = $selectMembers->fetchAll(PDO::FETCH_ASSOC);
 
         foreach($members as $id=>$member) {
+            echo $id;
             // form the full name
             $members[$id]['name'] = "{$member['fname']} {$member['lname']}";
 
-            if($member['premium'] == 1) {
+            if ($member['premium'] == 1) {
                 // get and set the interests
-                $interests = implode(', ', $this->getInterests($id+1));
+                $interests = implode(', ', $this->getInterests($id));
+                //var_dump($interests);
                 $members[$id]['interests'] = $interests;
             }
         }

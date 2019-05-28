@@ -2,12 +2,12 @@
 
 function validName($name)
 {
-    return ctype_alpha($name);
+    return !empty($name) && ctype_alpha($name);
 }
 
 function validAge($age)
 {
-    if (is_numeric($age)) {
+    if (!empty($age) && is_numeric($age)) {
         $numAge = intval($age);
         return $numAge >= 18 && $numAge <= 118;
     }

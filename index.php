@@ -23,7 +23,6 @@ $db = new Database();
 // root route, shows the landing page
 $f3->route('GET /', function()
 {
-    $f3->
     $view = new Template();
     echo $view->render('views/home.html');
 });
@@ -33,6 +32,14 @@ $f3->route('GET|POST /join', function($f3)
 {
     $errors = array();
     $_SESSION = array();
+
+    // f3 is so stupid.
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $f3->set('firstName', '');
+        $f3->set('lastName', '');
+        $f3->set('age', '');
+        $f3->set('phone', '');
+    }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -196,7 +203,8 @@ $f3->route('GET /admin', function($f3)
     // put the db and members into the hive
     global $db;
     $f3->set('db', $db);
-    $f3->set('members', $db->getMembers());
+    $members = $db->getMembers();
+    $f3->set('members', $members);
 
     $view = new Template();
     echo $view->render('views/admin.html');
